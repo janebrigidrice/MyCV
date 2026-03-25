@@ -1,60 +1,79 @@
+/* ===============================
+   COLOUR VARIABLES (GLOBAL THEME)
+   =============================== */
 :root {
-  --lilac: #87a3e0;
-  --olive: #6b7a3a;
-  --pale-blue: #729cb8;
-  --burgundy: #6e2332;
-  --off-white: #fdfcff;
-  --text-dark: #2b2430;
-  --white: #ffffff;
+  --lilac: #87a3e0;       /* Main page background (light blue/lilac tone) */
+  --olive: #6b7a3a;       /* Accent colour for shadows and highlights */
+  --pale-blue: #729cb8;   /* Secondary blue tone (not heavily used) */
+  --burgundy: #6e2332;    /* Sidebar + heading colour */
+  --off-white: #fdfcff;   /* Card/section background */
+  --text-dark: #2b2430;   /* Main text colour */
+  --white: #ffffff;       /* Pure white */
 }
 
+/* ===============================
+   GLOBAL RESET
+   =============================== */
 * {
-  box-sizing: border-box;
+  box-sizing: border-box; /* Ensures padding/border don't affect width */
 }
 
+/* ===============================
+   BODY STYLING
+   =============================== */
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background-color: var(--lilac);
-  color: var(--text-dark);
+  margin: 0; /* Removes default browser margin */
+  font-family: Arial, Helvetica, sans-serif; /* Font stack */
+  background-color: var(--lilac); /* Page background colour */
+  color: var(--text-dark); /* Default text colour */
 }
 
+/* ===============================
+   MAIN PAGE LAYOUT (GRID)
+   =============================== */
 .page-layout {
   display: grid;
-  grid-template-columns: 340px 1fr;
-  min-height: 100vh;
+  grid-template-columns: 340px 1fr; /* Sidebar + main content */
+  min-height: 100vh; /* Full screen height */
 }
 
+/* ===============================
+   SIDEBAR
+   =============================== */
 .sidebar {
-  background: var(--burgundy);
-  color: var(--white);
+  background: var(--burgundy); /* Dark background */
+  color: var(--white); /* Light text */
   padding: 32px 24px;
-  position: sticky;
+  position: sticky; /* Keeps sidebar fixed while scrolling */
   top: 0;
   height: 100vh;
-  overflow-y: auto;
+  overflow-y: auto; /* Scroll if content overflows */
 }
 
+/* Profile section inside sidebar */
 .profile-card {
   text-align: center;
   margin-bottom: 36px;
 }
 
+/* Profile image styling */
 .profile-image {
   width: 190px;
   height: 190px;
-  object-fit: cover;
-  border-radius: 24px;
+  object-fit: cover; /* Keeps image proportion */
+  border-radius: 24px; /* Rounded corners */
   border: 6px solid var(--lilac);
   margin-bottom: 18px;
 }
 
+/* Name styling */
 .profile-card h1 {
   margin: 0;
   font-size: 2rem;
   line-height: 1.1;
 }
 
+/* Job title text */
 .job-title {
   margin-top: 12px;
   font-size: 0.95rem;
@@ -62,10 +81,12 @@ body {
   line-height: 1.5;
 }
 
+/* Sidebar sections (Contact, Skills) */
 .sidebar-section {
   margin-bottom: 30px;
 }
 
+/* Section headings in sidebar */
 .sidebar-section h2 {
   font-size: 1rem;
   letter-spacing: 1px;
@@ -76,6 +97,7 @@ body {
   margin-bottom: 14px;
 }
 
+/* Remove default list styling */
 .contact-list,
 .tag-list {
   list-style: none;
@@ -83,26 +105,31 @@ body {
   margin: 0;
 }
 
+/* Contact list items */
 .contact-list li {
   margin-bottom: 10px;
   line-height: 1.5;
 }
 
+/* Links styling */
 .contact-list a {
   color: var(--lilac);
   text-decoration: none;
 }
 
+/* Hover effect for links */
 .contact-list a:hover {
   text-decoration: underline;
 }
 
+/* Skills list layout */
 .tag-list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
+/* Individual skill tags */
 .tag-list li {
   background: rgba(255, 255, 255, 0.14);
   color: var(--white);
@@ -111,13 +138,17 @@ body {
   font-size: 0.9rem;
 }
 
+/* ===============================
+   MAIN CONTENT AREA
+   =============================== */
 .main-content {
   padding: 40px;
 }
 
+/* Grid layout for sections */
 .content-grid {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 3fr 1fr; /* 75% / 25% layout */
   grid-template-areas:
     "hero education"
     "experience volunteer";
@@ -125,39 +156,49 @@ body {
   align-items: start;
 }
 
-.hero {
-  grid-area: hero;
-}
+/* Assign grid areas */
+.hero { grid-area: hero; }
+.education { grid-area: education; }
+.experience { grid-area: experience; }
+.volunteer { grid-area: volunteer; }
 
-.education {
-  grid-area: education;
-}
-
-.experience {
-  grid-area: experience;
-}
-
-.volunteer {
-  grid-area: volunteer;
-}
-
+/* ===============================
+   HERO SECTION (TOP LEFT)
+   =============================== */
 .hero-panel {
   background: var(--off-white);
   padding: 30px;
   border-radius: 24px;
-  box-shadow: 6px 6px 0px var(--olive);
+  box-shadow: 6px 6px 0px var(--olive); /* Solid shadow */
   margin-bottom: 0;
 }
 
+/* "Hello, I'm Jane" text */
 .intro-label {
   text-transform: uppercase;
   letter-spacing: 1.8px;
   font-weight: bold;
   color: var(--burgundy);
   margin-bottom: 8px;
-  font-size: 1.4rem !important;
+  font-size: 1.4rem !important; /* Increased size */
 }
 
+/* ===============================
+   HOVER EFFECTS
+   =============================== */
+.hero-panel,
+.card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* On hover: lift effect */
+.hero-panel:hover,
+.card:hover {
+  transform: translate(-4px, -4px); /* Moves element slightly */
+  box-shadow: 10px 10px 0px var(--olive); /* Stronger shadow */
+}
+
+/* Hero main heading */
 .hero-panel h2 {
   margin-top: 0;
   font-size: 2rem;
@@ -165,54 +206,68 @@ body {
   color: var(--burgundy);
 }
 
+/* Paragraph text in hero */
 .hero-panel p {
   font-size: 1rem;
   line-height: 1.8;
   margin-bottom: 14px;
 }
 
+/* ===============================
+   CARD SECTIONS (Education, etc.)
+   =============================== */
 .card {
   background: var(--off-white);
   padding: 26px;
   border-radius: 20px;
   box-shadow: 6px 6px 0px var(--olive);
   position: relative;
+  font-size: 1rem;
 }
 
+/* Card headings */
 .card h3 {
   margin-top: 0;
   color: var(--burgundy);
   font-size: 1.35rem;
 }
 
+/* Individual timeline entries */
 .timeline-item {
   margin-bottom: 20px;
 }
 
+/* Job/education titles */
 .timeline-item h4 {
   margin: 0 0 6px;
   color: var(--olive);
-  font-size: 1.05rem;
+  font-size: 1rem;
 }
 
+/* Paragraph text inside timeline */
 .timeline-item p {
   margin: 0;
   line-height: 1.7;
 }
 
+/* Meta text (dates etc.) */
 .meta {
   color: #6b5f6b;
   font-style: italic;
   margin-bottom: 6px !important;
 }
 
+/* Extra card styling (not heavily used now) */
 .accent-card {
   background: var(--off-white);
 }
 
+/* ===============================
+   RESPONSIVE DESIGN (MOBILE)
+   =============================== */
 @media (max-width: 960px) {
   .page-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stack layout */
   }
 
   .sidebar {
@@ -224,6 +279,7 @@ body {
     padding: 20px;
   }
 
+  /* Stack all sections vertically */
   .content-grid {
     grid-template-columns: 1fr;
     grid-template-areas:
@@ -233,11 +289,13 @@ body {
       "volunteer";
   }
 
+  /* Smaller image on mobile */
   .profile-image {
     width: 150px;
     height: 150px;
   }
 
+  /* Smaller heading on mobile */
   .hero-panel h2 {
     font-size: 1.6rem;
   }
