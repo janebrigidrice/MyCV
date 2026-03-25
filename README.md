@@ -23,3 +23,7 @@ This project is a personal CV website designed to present my professional backgr
 - `index.html` – Main webpage
 - `styles.css` – Styling and layout
 - `IMG_8606.JPG` – Profile image
+
+## Site URL
+
+https://janebrigidrice.github.io/MyCV/
